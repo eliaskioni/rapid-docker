@@ -136,11 +136,11 @@ IS_PROD = env('IS_PROD', 'off') == 'on'
 BRANDING = {
     'rapidpro.io': {
         'slug': env('BRANDING_SLUG', 'rapidpro'),
-        'name': env('BRANDING_NAME', 'RapidPro'),
-        'org': env('BRANDING_ORG', 'RapidPro'),
-        'colors': dict([rule.split('=') for rule in env('BRANDING_COLORS', 'primary=#0c6596').split(';')]),
+        'name': env('BRANDING_NAME', 'Inclusivity Solutions'),
+        'org': env('BRANDING_ORG', 'Inclusivity Solutions'),
+        'colors': dict([rule.split('=') for rule in env('BRANDING_COLORS', 'primary=#032a37').split(';')]),
         'styles': ['brands/rapidpro/font/style.css'],
-        'welcome_topup': 1000,
+        'welcome_topup': 1000000,
         'email': env('BRANDING_EMAIL', 'join@rapidpro.io'),
         'support_email': env('BRANDING_SUPPORT_EMAIL', 'join@rapidpro.io'),
         'link': env('BRANDING_LINK', 'https://app.rapidpro.io'),
@@ -155,7 +155,7 @@ BRANDING = {
         'bundles': [],
         'welcome_packs': [dict(size=5000, name="Demo Account"), dict(size=100000, name="UNICEF Account")],
         'description': _("Visually build nationally scalable mobile applications from anywhere in the world."),
-        'credits': _("Copyright &copy; 2012-%s UNICEF, Nyaruka, and individual contributors. All Rights Reserved." % (
+        'credits': _("Copyright &copy; 2012-%s Inclusivity Solutions." % (
             datetime.now().strftime('%Y')
         ))
     }

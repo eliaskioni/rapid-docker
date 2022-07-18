@@ -48,10 +48,7 @@ ARG RAPIDPRO_VERSION
 ARG RAPIDPRO_REPO
 ENV RAPIDPRO_VERSION=${RAPIDPRO_VERSION:-master}
 ENV RAPIDPRO_REPO=${RAPIDPRO_REPO:-rapidpro/rapidpro}
-RUN echo "Downloading RapidPro ${RAPIDPRO_VERSION} from https://github.com/$RAPIDPRO_REPO/archive/${RAPIDPRO_VERSION}.tar.gz" && \
-    wget -O rapidpro.tar.gz "https://github.com/$RAPIDPRO_REPO/archive/${RAPIDPRO_VERSION}.tar.gz" && \
-    tar -xf rapidpro.tar.gz --strip-components=1 && \
-    rm rapidpro.tar.gz
+RUN git clone https://github.com/rapidpro/rapidpro.git
 
 # Build Python virtualenv
 COPY requirements.txt /app/requirements.txt
@@ -84,16 +81,19 @@ COPY settings.py /rapidpro/temba/
 COPY stack/500.html /rapidpro/templates/
 COPY stack/init_db.sql /rapidpro/
 COPY stack/clear-compressor-cache.py /rapidpro/
+COPY favicon.ico /rapidpro/static/brands/rapidpro/
+COPY logo.png /rapidpro/static/brands/rapidpro/
+COPY splash.jpg /rapidpro/static/brands/rapidpro/
 COPY Procfile /rapidpro/
 COPY Procfile /
 EXPOSE 8000
 COPY stack/startup.sh /
 
-LABEL org.label-schema.name="RapidPro" \
-      org.label-schema.description="RapidPro allows organizations to visually build scalable interactive messaging applications." \
-      org.label-schema.url="https://www.rapidpro.io/" \
+LABEL org.label-schema.name="Inclusivity Solutions" \
+      org.label-schema.description=" Allows organizations to visually build scalable interactive messaging applications." \
+      org.label-schema.url="https://rapidpro.staging.aspin-inclusivity.com/" \
       org.label-schema.vcs-url="https://github.com/$RAPIDPRO_REPO" \
-      org.label-schema.vendor="Nyaruka, UNICEF, and individual contributors." \
+      org.label-schema.vendor="Inclusivity Solutions" \
       org.label-schema.version=$RAPIDPRO_VERSION \
       org.label-schema.schema-version="1.0"
 
